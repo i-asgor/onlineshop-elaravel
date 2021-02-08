@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2020 at 10:56 AM
+-- Generation Time: Feb 08, 2021 at 08:32 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -68,7 +68,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `name`, `text_style`, `sort_order`, `content`, `link`, `status`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Welcome To <br> The Online shop', 'text-left', 1, 'See how your users experience your website in realtime or view\r\n<br>trends to see any changes in performance over time.', 'http://eshop.me/admin/edit-banner/1', 1, '22439.jpg', '2020-11-15 10:40:56', '2020-11-22 05:52:55'),
+(1, 'Welcome To <br> The Online shop', 'text-left', 1, 'See how your users experience your website in realtime or view\r\n<br>trends to see any changes in performance over time.', 'http://eshop.me/admin/edit-banner/1', 1, '22439.jpg', '2020-11-15 10:40:56', '2020-12-22 05:49:37'),
 (3, 'Welcome To <br> The PMUK shop', 'text-center', 2, 'See how your users experience your website in realtime or view\r\n<br>trends to see any changes in performance over time.', 'http://eshop.me/admin/add-banner', 1, '39912.jpg', '2020-11-16 01:07:48', '2020-11-16 01:46:14'),
 (4, 'Welcome To <br> The Online shop', 'text-right', 3, 'See how your users experience your website in realtime or view\r\n<br>trends to see any changes in performance over time.', 'http://eshop.me/admin/add-banner', 1, '62540.jpg', '2020-11-16 01:23:55', '2020-11-16 01:46:33');
 
@@ -92,6 +92,15 @@ CREATE TABLE `carts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `product_id`, `product_name`, `product_code`, `product_color`, `size`, `price`, `quantity`, `user_email`, `session_id`, `created_at`, `updated_at`) VALUES
+(1, '1', 'Black T-Shirt', '0101', 'Black', 'Medium', '850', 1, '', 'CaRhuf7x74tpQGRZPxaqLKthlm9f5lv2V5buuqYc', NULL, NULL),
+(2, '2', 'Pink T-Shirt', '0102', 'Pink', 'Small', '220', 1, '', 'e28Dd3CPayvJR3tDuNhhf8dVx7llAeCDOJSukZ14', NULL, NULL),
+(3, '1', 'Black T-Shirt', '0101', 'Black', 'Extra Small', '860', 1, '', 'ENcK766ulbPkmhf28EJrfiBiZeSSCzt57S8fXR3z', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -318,8 +327,8 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `coupon_code`, `amount`, `amount_type`, `expiry_date`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'AIMR001', 100, 'Fixed', '2020-12-02', 1, '2020-11-29 04:03:18', '2020-11-29 04:03:18'),
-(2, 'AIMR002', 25, 'Percentage', '2020-12-10', 1, '2020-11-29 04:03:47', '2020-11-29 04:03:47');
+(1, 'AIMR001', 100, 'Fixed', '2021-01-15', 1, '2020-11-29 04:03:18', '2020-12-14 04:48:26'),
+(2, 'AIMR002', 25, 'Percentage', '2020-12-28', 1, '2020-11-29 04:03:47', '2020-12-11 08:29:39');
 
 -- --------------------------------------------------------
 
@@ -347,9 +356,9 @@ CREATE TABLE `delivery_adresses` (
 --
 
 INSERT INTO `delivery_adresses` (`id`, `user_id`, `user_email`, `name`, `address`, `city`, `state`, `country`, `pincode`, `mobile`, `created_at`, `updated_at`) VALUES
-(1, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', '2020-11-26 08:29:52', '2020-11-30 22:20:51'),
+(1, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', '2020-11-26 08:29:52', '2021-01-18 10:54:00'),
 (2, 5, 'i.joni40@gmail.com', 'Joni', 'H#548, R#10, Adabar', 'Adabar', 'Adabar', 'Bangladesh', '1209', '01713092999', '2020-11-28 03:44:11', '2020-11-28 10:22:32'),
-(3, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', '2020-11-30 22:58:05', '2020-12-01 03:57:37');
+(3, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', '2020-11-30 22:58:05', '2020-12-13 23:30:20');
 
 -- --------------------------------------------------------
 
@@ -443,7 +452,13 @@ INSERT INTO `orders` (`id`, `user_id`, `user_email`, `name`, `address`, `city`, 
 (9, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', 0.00, 'Not Used', 0.00, 'Shipped', 'dbt', 34000.00, '2020-11-30 22:58:17', '2020-11-30 23:38:38'),
 (10, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', 0.00, 'Not Used', 0.00, 'Paid', 'cod', 44900.00, '2020-12-01 03:35:56', '2020-12-01 03:37:08'),
 (11, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', 0.00, 'Not Used', 0.00, 'Pending', 'dbt', 44900.00, '2020-12-01 03:48:53', '2020-12-02 05:23:31'),
-(12, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', 0.00, 'Not Used', 0.00, 'Delivered', 'dbt', 105000.00, '2020-12-01 03:57:43', '2020-12-02 23:30:43');
+(12, 6, 'mamun@padakhep.org', 'F M Mamun', 'Shekhetek', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1207', '01777777777', 0.00, 'Not Used', 0.00, 'Delivered', 'dbt', 105000.00, '2020-12-01 03:57:43', '2020-12-02 23:30:43'),
+(13, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'AIMR002', 212.50, 'New', 'cod', 637.50, '2020-12-11 08:31:43', '2020-12-11 08:31:43'),
+(14, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'Not Used', 0.00, 'New', 'cod', 103630.00, '2020-12-13 23:02:33', '2020-12-13 23:02:33'),
+(19, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'Not Used', 0.00, 'New', 'dbt', 740.00, '2020-12-13 23:35:11', '2020-12-13 23:35:11'),
+(20, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'Not Used', 0.00, 'New', 'dbt', 105000.00, '2020-12-13 23:40:39', '2020-12-13 23:40:39'),
+(21, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'Not Used', 0.00, 'New', 'dbt', 720.00, '2020-12-14 00:04:45', '2020-12-14 00:04:45'),
+(22, 4, 'asgor@padakhep.org', 'Asgor', 'H#548,R#10', 'Adabar', 'Mohammadpur', 'Bangladesh', '1209', '01751669661', 0.00, 'Not Used', 0.00, 'New', 'dbt', 795.00, '2021-01-18 10:54:16', '2021-01-18 10:54:16');
 
 -- --------------------------------------------------------
 
@@ -484,7 +499,14 @@ INSERT INTO `orders_products` (`id`, `order_id`, `user_id`, `product_id`, `produ
 (11, 9, 6, '3', '0304', 'Midea MSM12HRI 1 Ton Inverter Split Type Air Conditioner', 'White', '1 ton', '34000', '1', '2020-11-30 22:58:17', '2020-11-30 22:58:17'),
 (12, 10, 6, '6', '38KHA012N', 'Carrier Air Conditioner 38KHA012N', 'White', '1 Ton', '44900', '1', '2020-12-01 03:35:56', '2020-12-01 03:35:56'),
 (13, 11, 6, '6', '38KHA012N', 'Carrier Air Conditioner 38KHA012N', 'White', '1 Ton', '44900', '1', '2020-12-01 03:48:53', '2020-12-01 03:48:53'),
-(14, 12, 6, '4', '0401', 'Samsung RU7100 65\" Flat 4K UHD Smart TV', 'White', '40 inch', '105000', '1', '2020-12-01 03:57:43', '2020-12-01 03:57:43');
+(14, 12, 6, '4', '0401', 'Samsung RU7100 65\" Flat 4K UHD Smart TV', 'White', '40 inch', '105000', '1', '2020-12-01 03:57:43', '2020-12-01 03:57:43'),
+(15, 13, 4, '1', '0101', 'Black T-Shirt', 'Black', 'Medium', '850', '1', '2020-12-11 08:31:43', '2020-12-11 08:31:43'),
+(16, 14, 4, '2', '0102', 'Pink T-Shirt', 'Pink', 'Medium', '730', '1', '2020-12-13 23:02:33', '2020-12-13 23:02:33'),
+(19, 19, 4, '2', '0102', 'Pink T-Shirt', 'Pink', 'Large', '740', '1', '2020-12-13 23:35:11', '2020-12-13 23:35:11'),
+(20, 20, 4, '4', '0401', 'Samsung RU7100 65\" Flat 4K UHD Smart TV', 'White', '40 inch', '105000', '1', '2020-12-13 23:40:39', '2020-12-13 23:40:39'),
+(21, 21, 4, '2', '0102', 'Pink T-Shirt', 'Pink', 'Small', '720', '1', '2020-12-14 00:04:45', '2020-12-14 00:04:45'),
+(22, 22, 4, '2', '0102', 'Pink T-Shirt', 'Pink', 'Small', '220', '1', '2021-01-18 10:54:16', '2021-01-18 10:54:16'),
+(23, 22, 4, '1', '0101', 'Black T-Shirt', 'Black', 'Small', '575', '1', '2021-01-18 10:54:16', '2021-01-18 10:54:16');
 
 -- --------------------------------------------------------
 
@@ -558,14 +580,15 @@ INSERT INTO `products_attributes` (`id`, `product_id`, `sku`, `size`, `price`, `
 (3, 1, '0101-L', 'Large', 900, 5, '2020-11-17 02:54:17', '2020-11-17 02:54:17'),
 (5, 1, '0101-XS', 'Extra Small', 860, 5, '2020-11-17 03:02:56', '2020-11-17 03:02:56'),
 (6, 1, '0101-XL', 'Extra Large', 900, 5, '2020-11-17 03:02:57', '2020-11-17 03:02:57'),
-(8, 2, '0102-S', 'Small', 720, 51, '2020-11-17 03:05:53', '2020-11-17 07:18:28'),
-(9, 2, '0102-M', 'Medium', 730, 5, '2020-11-17 03:05:53', '2020-11-17 07:18:28'),
-(10, 2, '0102-L', 'Large', 740, 5, '2020-11-17 03:05:53', '2020-11-17 07:18:28'),
-(12, 2, '0102-XS', 'Extra Small', 730, 5, '2020-11-17 07:18:18', '2020-11-17 07:18:28'),
-(13, 2, '0102-XL', 'Extra Large', 740, 5, '2020-11-18 02:40:04', '2020-11-18 02:40:04'),
+(8, 2, '0102-S', 'Small', 720, 11, '2020-11-17 03:05:53', '2020-12-14 04:03:16'),
+(9, 2, '0102-M', 'Medium', 730, 5, '2020-11-17 03:05:53', '2020-12-14 04:03:16'),
+(10, 2, '0102-L', 'Large', 740, 5, '2020-11-17 03:05:53', '2020-12-14 04:03:16'),
+(12, 2, '0102-XS', 'Extra Small', 730, 5, '2020-11-17 07:18:18', '2020-12-14 04:03:16'),
+(13, 2, '0102-XL', 'Extra Large', 740, 5, '2020-11-18 02:40:04', '2020-12-14 04:03:16'),
 (14, 3, '0304-L', '1 ton', 34000, 5, '2020-11-21 22:16:21', '2020-11-21 22:18:17'),
 (15, 4, '0401-L', '40 inch', 105000, 5, '2020-11-21 22:17:23', '2020-11-21 22:19:08'),
-(16, 6, '38KHA012N-S', '1 Ton', 44900, 5, '2020-12-01 03:32:37', '2020-12-01 03:32:37');
+(16, 6, '38KHA012N-S', '1 Ton', 44900, 5, '2020-12-01 03:32:37', '2020-12-01 03:32:37'),
+(17, 5, '0601-s', 'Small', 320, 5, '2020-12-14 01:30:07', '2020-12-14 01:30:07');
 
 -- --------------------------------------------------------
 
@@ -598,7 +621,10 @@ INSERT INTO `product_images` (`id`, `product_id`, `image`, `created_at`, `update
 (11, '3', '97899.jpg', '2020-11-21 22:14:21', '2020-11-21 22:14:21'),
 (12, '6', '1506.jpg', '2020-12-01 03:31:39', '2020-12-01 03:31:39'),
 (13, '6', '98441.jpg', '2020-12-01 03:31:44', '2020-12-01 03:31:44'),
-(14, '6', '45455.jpg', '2020-12-01 03:31:50', '2020-12-01 03:31:50');
+(14, '6', '45455.jpg', '2020-12-01 03:31:50', '2020-12-01 03:31:50'),
+(15, '5', '50323.jpg', '2020-12-14 01:32:23', '2020-12-14 01:32:23'),
+(17, '5', '31221.jpg', '2020-12-14 01:35:02', '2020-12-14 01:35:02'),
+(18, '5', '87656.jpg', '2020-12-14 01:35:10', '2020-12-14 01:35:10');
 
 -- --------------------------------------------------------
 
@@ -632,11 +658,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `address`, `state`, `city`, `country
 (1, 'admin', 'admin@gmail.com', '', '', '', '', '', '', NULL, 1, '$2y$10$zMFyiuoBLe/n5ymhF8g7RupCO8c74M1QQBXrBYZIpi3Y4eaNFHx7y', NULL, '2020-11-10 00:55:55', '2020-11-10 00:55:55'),
 (2, 'Asgor', 'asgor2@padakhep.org', 'H#23,R#01, Shekertek, Adabar', 'Mohammadpur', 'Mohammadpur', 'Bangladesh', '1209', '01751', '2020-11-26 05:55:04', 0, '$2y$10$QWKS3HT7y9wcmem//JgcYOyNf5LzSdhg5g2/EWn74EbnJ6oy9mMeS', NULL, '2020-11-24 03:55:39', '2020-11-26 05:55:04'),
 (3, 'Asgor1', 'asgor1@padakhep.org', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '$2y$10$uQp8sfRU0mshmkXFy.PXNuj4D6BgFXPyMkzz/GEoR4rIxLixZ.msa', NULL, '2020-11-26 03:51:07', '2020-11-26 03:51:07'),
-(4, 'Asgor', 'asgor@padakhep.org', 'H#548,R#10', 'Mohammadpur', 'Adabar', 'Bangladesh', '1209', '01751669661', '2020-11-26 04:17:23', 0, '$2y$10$g2qRQvBUrTgGKMJGgAfO1eCPtcxhFxsNoGIUfI/mB/HTgd.jKfW/e', NULL, '2020-11-26 04:14:25', '2020-11-30 22:20:51'),
+(4, 'Asgor', 'asgor@padakhep.org', 'H#548,R#10', 'Mohammadpur', 'Adabar', 'Bangladesh', '1209', '01751669661', '2020-11-26 04:17:23', 0, '$2y$10$g2qRQvBUrTgGKMJGgAfO1eCPtcxhFxsNoGIUfI/mB/HTgd.jKfW/e', NULL, '2020-11-26 04:14:25', '2021-01-18 10:54:00'),
 (5, 'Joni', 'i.joni40@gmail.com', 'H#548, R#10, Adabar', 'Adabar', 'Adabar', 'Bangladesh', '1209', '01713092999', '2020-11-26 04:29:12', 0, '$2y$10$SmD7jK1lK2/fmaS6bTEhuuBhF7taQi/OXU49c0aGJ4ZCQK/k6z0uq', NULL, '2020-11-26 04:24:47', '2020-11-28 10:22:32'),
-(6, 'F M Mamun', 'mamun@padakhep.org', 'Shekhetek', 'Dhaka', 'Mohammadpur', 'Bangladesh', '1207', '01777777777', '2020-11-30 22:55:03', 0, '$2y$10$OicLpcCfVG4AwX8pULFOtOTPFtJnx3iRFTi7J.UguYKfxSi/jqX66', NULL, '2020-11-30 22:51:56', '2020-12-01 03:57:37'),
+(6, 'F M Mamun', 'mamun@padakhep.org', 'Shekhetek', 'Dhaka', 'Mohammadpur', 'Bangladesh', '1207', '01777777777', '2020-11-30 22:55:03', 0, '$2y$10$OicLpcCfVG4AwX8pULFOtOTPFtJnx3iRFTi7J.UguYKfxSi/jqX66', NULL, '2020-11-30 22:51:56', '2020-12-13 23:30:20'),
 (7, 'saiful', 'saiful@padakhep.org', NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-02 23:06:28', 0, '$2y$10$nJyH4gXDO3w2w1diGcQQSue2nX5STrcsyhmfgZQ9MiR8ZEEJ0eZlK', NULL, '2020-12-02 23:04:31', '2020-12-02 23:06:28'),
-(8, 'Razwanul', 'razwanul@padakhep.org', NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-02 23:16:26', 0, '$2y$10$V/4WtwkA.SbkLa3cKyUkPOJEnTmTkVvROQZnLxUOr/Zneo27.N3Ke', NULL, '2020-12-02 23:16:11', '2020-12-02 23:16:26');
+(8, 'Razwanul', 'razwanul@padakhep.org', NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-02 23:16:26', 0, '$2y$10$V/4WtwkA.SbkLa3cKyUkPOJEnTmTkVvROQZnLxUOr/Zneo27.N3Ke', NULL, '2020-12-02 23:16:11', '2020-12-02 23:16:26'),
+(9, 'Jamil', 'jamil@padakhep.org', NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-15 02:01:17', 0, '$2y$10$5cra.0xqIuvPgY0/aLmM0ODkZr6LXRzZajaGn72Zcx9XiVqiolGJS', NULL, '2020-12-15 01:57:57', '2020-12-15 02:01:17'),
+(10, 'Mr. Joni', 'i.joni@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '$2y$10$RlQ.wCYuiaugVRIw0eqy..zdrf.kM51N07hMAd34miYfkH21Hidd2', NULL, '2020-12-15 02:33:20', '2020-12-15 02:33:20');
 
 --
 -- Indexes for dumped tables
@@ -761,7 +789,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -803,13 +831,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders_products`
 --
 ALTER TABLE `orders_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -821,19 +849,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products_attributes`
 --
 ALTER TABLE `products_attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
